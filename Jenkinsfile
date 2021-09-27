@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('deployment') {
             steps {
-                echo "Deploying on Dev ..."
-                printf '{
+            sh printf '{
   "email":"ubaid.urrehman@infosys.com",
   "password":"@Kashu11223344!",
   "federationLogins":true
