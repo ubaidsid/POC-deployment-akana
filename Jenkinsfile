@@ -3,14 +3,17 @@ pipeline {
     stages {
         stage('deployment') {
             steps {
-            sh printf '{
+           wget --no-check-certificate --quiet \
+  --method POST \
+  --timeout=0 \
+  --header 'Authorization: Basic dWJhaWQudXJyZWhtYW5AaW5mb3N5cy5jb206QEthc2h1MTEyMjMzNDQh' \
+  --header 'Content-Type: application/json' \
+  --body-data '{
   "email":"ubaid.urrehman@infosys.com",
   "password":"@Kashu11223344!",
   "federationLogins":true
-}'| http  --follow --timeout 3600 POST 'https://preprod-portal-entapi.spectrummobile.com/api/login' \
- Authorization:'Basic dWJhaWQudXJyZWhtYW5AaW5mb3N5cy5jb206QEthc2h1MTEyMjMzNDQh' \
- Content-Type:'application/json'
-            }
+}' \
+   'https://preprod-portal-entapi.spectrummobile.com/api/login'
         }
         stage('Test cases') {
             steps {
