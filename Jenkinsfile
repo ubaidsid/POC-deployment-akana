@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('deployment') {
             steps {
-                curl --location --request POST 'https://preprod-portal-entapi.spectrummobile.com/api/login' \
+                curl --location --request POST -k 'https://preprod-portal-entapi.spectrummobile.com/api/login' \
 --header 'Authorization: Basic dWJhaWQudXJyZWhtYW5AaW5mb3N5cy5jb206QEthc2h1MTEyMjMzNDQh' \
 --header 'Content-Type: application/json' \
 --data-raw '{
